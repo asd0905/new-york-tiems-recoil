@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ root.render(
       <QueryClientProvider client={queryClient}>
         <RecoilRoot>
           <App />
+          <ReactQueryDevtools initialIsOpen={true} />
         </RecoilRoot>
       </QueryClientProvider>
     </BrowserRouter>

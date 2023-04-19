@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
-import List from "./pages/list/List";
 import Scrap from "./pages/scrap/Scrap";
+import List from "./pages/list/List";
 
 const Routers = () => {
     return (
