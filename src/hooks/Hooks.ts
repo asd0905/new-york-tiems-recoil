@@ -11,14 +11,15 @@ export const UesFetchNews = () => {
         ['newsList'], newsListFetch,
         {
             refetchOnWindowFocus: false,
-            getNextPageParam: (lastPage) => {
-                return lastPage && lastPage.hasNextPage && lastPage?.response.num_results > 0 ? lastPage?.nextPage : null;
+            getNextPageParam: (lastPage, allPage) => {
+                return lastPage && lastPage.hasNextPage &&
+                    lastPage?.response?.response?.meta?.hits >= allPage.length * 10 ?
+                    lastPage?.nextPage : null;
             },
             onSuccess: (data: InfiniteData<any>): void => {
-                console.log(data);
                 if ((data?.pages.length > 0 && !data?.pages[data?.pages.length - 1]?.response) ||
                     data?.pages.length !== data?.pageParams.length) return;
-                const combineArr = data.pages.flatMap((page: InfiniteDataProps) => page.response.results);
+                const combineArr = data.pages.flatMap((page: InfiniteDataProps) => page.response.response.docs);
                 setNewsList(combineArr);
             },
             onError: () => {
