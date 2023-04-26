@@ -1,10 +1,12 @@
 import { SLayout } from "./List.style"
-import { UesFetchNews, useInterSect } from "../../hooks/Hooks";
 import { useRecoilValue } from "recoil";
 import { newsListAtom } from "../../atoms/atoms";
 import { Suspense } from "react";
-import moment from 'moment';
+import moment from "moment";
 import 'moment/locale/ko';
+import "react-datepicker/dist/react-datepicker.css";
+import { useInterSect } from "../../hooks/useInterSect";
+import { UesFetchNews } from "../../hooks/useFetchNews";
 
 const List = () => {
     const { isFetching, hasNextPage, fetchNextPage, error, status } = UesFetchNews();
@@ -15,8 +17,7 @@ const List = () => {
         if (hasNextPage && !isFetching) {
             fetchNextPage();
         }
-    }, { threshold: 0.2 });
-
+    }, { threshold: 0.3 });
 
     return (
         <SLayout>

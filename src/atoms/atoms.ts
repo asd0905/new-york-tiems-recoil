@@ -10,3 +10,8 @@ export const newsListAtom = atom<INewsProps[]>({
     key: 'newsListAtom',
     default: [],
 })
+
+export const modalAtom = atom<boolean>({
+    key: 'modal',
+    default: false
+})

@@ -81,4 +81,9 @@ export const SLayout = styled.div`
             }
         }
     }
+
+    .interSectRef {
+        height: 80px;
+        background-color: #ddd;
+    }
 `;

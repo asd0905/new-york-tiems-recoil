@@ -2,6 +2,7 @@ import React from 'react';
 import Routers from './Routers';
 import { createGlobalStyle } from 'styled-components';
 import Footer from './layout/footer/footer';
+import Header from './layout/header/Header';
 function App() {
 
   const GlobalStyled = createGlobalStyle`
@@ -25,6 +26,7 @@ function App() {
   return (
     <>
       <GlobalStyled />
+      <Header />
       <Routers />
       <Footer />
     </>
