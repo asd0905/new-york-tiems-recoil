@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.9eb3d357.css",
-    "main.js": "/static/js/main.bd29f5ff.js",
-    "static/js/787.b71a0196.chunk.js": "/static/js/787.b71a0196.chunk.js",
-    "index.html": "/index.html",
-    "main.9eb3d357.css.map": "/static/css/main.9eb3d357.css.map",
-    "main.bd29f5ff.js.map": "/static/js/main.bd29f5ff.js.map",
-    "787.b71a0196.chunk.js.map": "/static/js/787.b71a0196.chunk.js.map"
+    "main.css": "/new-york-tiems-recoil/static/css/main.9eb3d357.css",
+    "main.js": "/new-york-tiems-recoil/static/js/main.951bf64c.js",
+    "static/js/787.b71a0196.chunk.js": "/new-york-tiems-recoil/static/js/787.b71a0196.chunk.js",
+    "index.html": "/new-york-tiems-recoil/index.html",
+    "main.9eb3d357.css.map": "/new-york-tiems-recoil/static/css/main.9eb3d357.css.map",
+    "main.951bf64c.js.map": "/new-york-tiems-recoil/static/js/main.951bf64c.js.map",
+    "787.b71a0196.chunk.js.map": "/new-york-tiems-recoil/static/js/787.b71a0196.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9eb3d357.css",
-    "static/js/main.bd29f5ff.js"
+    "static/js/main.951bf64c.js"
   ]
 }
