@@ -1,30 +1,23 @@
-import { InfiniteData, useInfiniteQuery } from "react-query";
-import { newsListFetch } from "../fetch/fetch";
-import { useSetRecoilState } from "recoil";
-import { newsListAtom } from "../atoms/atoms";
-import { InfiniteDataProps } from "../app.constant";
+import { QueryFunctionContext } from "react-query";
+import { INewsParamsProps, NEW_YORK_TIMES_API } from "../app.constant";
 
-/** 뉴스정보 가져오는 InifiniteQuery Fetch */
-export const UesFetchNews = () => {
-    const setNewsList = useSetRecoilState(newsListAtom);
-    return useInfiniteQuery(
-        ['newsList'], newsListFetch,
-        {
-            refetchOnWindowFocus: false,
-            getNextPageParam: (lastPage, allPage) => {
-                return lastPage && lastPage.hasNextPage &&
-                    lastPage?.response?.response?.meta?.hits >= allPage.length * 10 ?
-                    lastPage?.nextPage : null;
-            },
-            onSuccess: (data: InfiniteData<any>): void => {
-                if ((data?.pages.length > 0 && !data?.pages[data?.pages.length - 1]?.response) ||
-                    data?.pages.length !== data?.pageParams.length) return;
-                const combineArr = data.pages.flatMap((page: InfiniteDataProps) => page.response.response.docs);
-                setNewsList(combineArr);
-            },
-            onError: () => {
-                setNewsList([]);
-            }
-        }
-    )
-}
+/** 뉴스 데이터 가져오는 fetch */
+export const UseFetchNews = async (
+	{ pageParam = 1 }: any,
+	params?: INewsParamsProps
+) => {
+	try {
+		const paramObj = {
+			...params,
+			page: pageParam,
+		};
+		const queryStr = new URLSearchParams(paramObj).toString();
+		const response = await (
+			await fetch(`${NEW_YORK_TIMES_API}?${queryStr}`)
+		).json();
+		if (response.fault) throw new Error("에러 발생");
+		return { response, nextPage: pageParam + 1, hasNextPage: true };
+	} catch (e) {
+		return { nextPage: pageParam + 1, hasNextPage: false };
+	}
+};

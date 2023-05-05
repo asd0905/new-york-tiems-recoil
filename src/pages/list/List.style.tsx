@@ -4,7 +4,7 @@ export const SLayout = styled.div`
     background: #F0F1F4;
     padding: 20px 0;
     .newsListBox {
-        max-height: calc(100vh - 105px);
+        max-height: calc(100vh - 165px);
         padding: 0 20px;
         overflow-y: auto;
     }
